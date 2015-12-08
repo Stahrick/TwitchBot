@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,7 +25,6 @@ public class GUI {
 	final JCheckBox aktivitaet;
 	Saving sav = new Saving();
 	final Thread t = new Thread(sav);
-	menucreation();
 		
 	frame = new JFrame("Twitch-Chatbot");			//Erstellt Frame
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Bei schließen des Fensters Operation
@@ -143,21 +141,6 @@ public class GUI {
 	
 	}
 	
-	public static void menucreation() {
-		menubar = new JMenuBar();  //JFrame Menü oben am Fenster
-		JMenu menucon = new JMenu("Verbindung");
-		menucon.setMnemonic(KeyEvent.VK_A);
-		menubar.add(menucon);
-		
-		JMenuItem connection = new JMenuItem("Verbinden");
-		menucon.add(connection);
-		
-		JMenu menusett = new JMenu("Einstellungen");
-		menubar.add(menusett);
-		
-		JMenuItem settings = new JMenuItem("Einstellungen");
-		menusett.add(settings);
-	}
 }
 class Saving implements Runnable{
 	@Override
