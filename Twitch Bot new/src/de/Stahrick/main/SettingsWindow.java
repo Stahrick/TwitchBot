@@ -12,12 +12,12 @@ import java.util.Properties;
 import javax.swing.*;
 
 
-public class GUI {
+public class SettingsWindow {
 	static JLabel status;
 	static JFrame frame;
 	static JMenuBar menubar;
 	
-	public static void main(String[] s) {
+	public static void framecreation() {
 	
 	final JTextField botnametext;	
 	final JTextField twitchnametext;
@@ -26,21 +26,17 @@ public class GUI {
 	Saving sav = new Saving();
 	final Thread t = new Thread(sav);
 		
-	frame = new JFrame("Twitch-Chatbot");			//Erstellt Frame
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//Bei schlieﬂen des Fensters Operation
+	frame = new JFrame("TwitchBot: Settings-Window");			//Erstellt Frame
+	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		//Bei schlieﬂen des Fensters Operation
 	frame.setResizable(false);
-	frame.setJMenuBar(menubar);
 	
 	JPanel panel = new JPanel();
 	panel.setLayout(null);
 	
-	JLabel label = new JLabel("Welcome to the Twitch-Chatbot GUI");
 	JLabel botname = new JLabel("Botname");
-	botname.setBounds(174, 45, 55, 15);
-	botname.setText(main.Botname);
+	botname.setBounds(174, 30, 60, 15);
 	JLabel twitchname = new JLabel("Twitch Streamer Name");
-	twitchname.setBounds(10, 45, 132, 15);
-	twitchname.setText(main.Streamername);
+	twitchname.setBounds(10, 30, 132, 15);
 	JLabel oAuth = new JLabel("oAuthPassword");
 	oAuth.setBounds(10, 90, 282, 15);
 	status = new JLabel("Bereit");
@@ -49,9 +45,11 @@ public class GUI {
 	statusbeschr.setBounds(5, 530, 40, 15);
 	
 	botnametext = new JTextField("");
+	botnametext.setText(main.Botname);
 	botnametext.setToolTipText("Gib hier den Twitch-Bot Namen ein");
 	botnametext.setBounds(174, 53, 118, 21);
 	twitchnametext = new JTextField("");
+	twitchnametext.setText(main.Streamername);
 	twitchnametext.setToolTipText("Gib hier deinen Twitch Namen ein");
 	twitchnametext.setBounds(10, 53, 132, 21);
 	oAuthtext = new JTextField("");
@@ -60,19 +58,15 @@ public class GUI {
 	
 	aktivitaet = new JCheckBox();									//JCheckbox
 	aktivitaet.setText("Aktivit\u00E4tspr\u00FCfung aller Nutzer");
+	aktivitaet.setToolTipText("Activity control of all users.");
 	aktivitaet.setBounds(10, 151, 190, 26);
 	
 	JButton speichern = new JButton();
 	speichern.setText("Speichern");
 	speichern.setToolTipText("Save all settings");
 	speichern.setBounds(821, 495, 118, 25);
-	JButton giveaway = new JButton();
-	giveaway.setText("Giveaway");
-	giveaway.setToolTipText("Giveaway menu");
-	giveaway.setBounds(10, 495, 118, 25);
 	
 	
-	panel.add(label);
 	panel.add(statusbeschr);
 	panel.add(status);
 	panel.add(botname);
@@ -83,7 +77,6 @@ public class GUI {
 	panel.add(oAuthtext);
 	panel.add(aktivitaet);
 	panel.add(speichern);
-	panel.add(giveaway);
 	
 	frame.add(panel);
 	
@@ -122,13 +115,6 @@ public class GUI {
 		}
 	});
 	
-	giveaway.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			GiveawayWindow.framecreation();
-			status.setText("Giveaway Fenster ge\u00F6ffnet!");
-		}
-	});
 	
 	/*frame.addWindowListener(new java.awt.event.WindowAdapter() {
 		@SuppressWarnings("unused")
@@ -145,10 +131,10 @@ public class GUI {
 class Saving implements Runnable{
 	@Override
 	public void run() {
-		GUI.status.setText("Einstellungen erfolgreich gespeichert!");
+		SettingsWindow.status.setText("Einstellungen erfolgreich gespeichert!");
 		try {
 			Thread.sleep(5000);
-			GUI.status.setText("Bereit");
+			SettingsWindow.status.setText("Bereit");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

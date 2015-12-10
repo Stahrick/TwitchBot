@@ -35,8 +35,6 @@ public void onEnable() {
 	Configcreation();
 	Filecheck();
 	Filereading();
-	String[] s = null;
-	GUI.main(s);
 }
 
 public void onDisable() {

@@ -3,6 +3,8 @@ package de.Stahrick.main;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.*;
@@ -12,11 +14,13 @@ public class GUImainmenu {
 	public static int framesizex = 1000;
 	public static int framesizey = 500;
 	public static JMenuBar menubar;
+	public static JFrame frame;
 	
 	public static void main(String[] s) {
+		new main();
 		menucreation();
 		
-		JFrame frame = new JFrame("Twitch-ChatBot");
+		frame = new JFrame("Twitch-ChatBot");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setJMenuBar(menubar);
@@ -47,11 +51,35 @@ public class GUImainmenu {
 		
 		JMenuItem connection = new JMenuItem("Verbinden");
 		menucon.add(connection);
+		connection.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ConnectionWindow.framecreation();
+			}
+		});
+		
+		JMenu menugiv = new JMenu("Giveaway");
+		menubar.add(menugiv);
+		
+		JMenuItem giveaway = new JMenuItem("Giveaway");
+		menugiv.add(giveaway);
+		giveaway.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GiveawayWindow.framecreation();
+			}
+		});
 		
 		JMenu menusett = new JMenu("Einstellungen");
 		menubar.add(menusett);
 		
 		JMenuItem settings = new JMenuItem("Einstellungen");
 		menusett.add(settings);
+		settings.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SettingsWindow.framecreation();
+			}
+		});
 }
 }

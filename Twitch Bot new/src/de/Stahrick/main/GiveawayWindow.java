@@ -4,8 +4,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
@@ -25,7 +23,6 @@ public class GiveawayWindow {
 	frame = new JFrame("TwitchBot: Giveaway-Window");
 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	frame.setResizable(false);
-	frame.addWindowListener(new closewindow());
 	
 	JPanel panel = new JPanel();
 	panel.setLayout(null);
@@ -104,7 +101,7 @@ class error implements Runnable{
 	}
 }
 
-class closewindow implements WindowListener {
+/*class closewindow implements WindowListener {
 	@Override
 	public void windowOpened(WindowEvent e) {
 	}
@@ -115,7 +112,7 @@ class closewindow implements WindowListener {
 
 	@Override
 	public void windowClosed(WindowEvent e) {
-		if(e.getWindow().getName() == GiveawayWindow.frame.getName()) {
+		if(e.getWindow().getName() != GUImainmenu.frame.getName()) {
 			GUI.status.setText("Bereit");
 		}
 	}
@@ -135,4 +132,4 @@ class closewindow implements WindowListener {
 	@Override
 	public void windowDeactivated(WindowEvent e) {
 	}
-}
+}*/
