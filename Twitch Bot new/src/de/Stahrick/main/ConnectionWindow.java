@@ -12,8 +12,8 @@ public class ConnectionWindow {
 	
 	
 	public static void framecreation() {
-		int framesizex = 1000;
-		int framesizey = 800;
+		int framesizex = 400;
+		int framesizey = 600;
 		
 		frame = new JFrame("TwitchBot: Connection-Window");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -24,18 +24,31 @@ public class ConnectionWindow {
 		
 		status = new JLabel();
 		status.setText("Bereit");
-		status.setBounds(50, 750, 300, 15);
+		status.setBounds(50, 550, 300, 15);
 		JLabel statusbeschr = new JLabel();
-		statusbeschr.setBounds(5, 750, 50, 15);
+		statusbeschr.setBounds(5, 550, 50, 15);
 		statusbeschr.setText("Status: ");
+		JLabel twitchnamelabel = new JLabel("Twitch Name");
+		twitchnamelabel.setBounds(10, 50, 80, 25);
 		
+		JTextField twitchname = new JTextField("Twitch Channel");
+		twitchname.setBounds(90, 50, 300, 25);
+		twitchname.setText(main.Streamername);
+		twitchname.setToolTipText("Enter here your Twitch Name.");
 		
 		JButton connect = new JButton();
-		connect.setBounds(800, 720, 160, 25);
+		connect.setBounds(270, 520, 100, 25);
 		connect.setText("Verbinden");
 		connect.setToolTipText("Connect");
+		JButton cancel = new JButton();
+		cancel.setBounds(30, 520, 100, 25);
+		cancel.setText("Abbrechen");
+		cancel.setToolTipText("Cancel");
 		
 		panel.add(connect);
+		panel.add(twitchnamelabel);
+		panel.add(twitchname);
+		panel.add(cancel);
 		panel.add(statusbeschr);
 		panel.add(status);
 		frame.add(panel);

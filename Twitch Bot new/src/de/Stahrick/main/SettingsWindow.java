@@ -61,6 +61,7 @@ public class SettingsWindow {
 	aktivitaet.setToolTipText("Activity control of all users.");
 	aktivitaet.setBounds(10, 151, 190, 26);
 	
+	
 	JButton speichern = new JButton();
 	speichern.setText("Speichern");
 	speichern.setToolTipText("Save all settings");

@@ -33,6 +33,9 @@ public class GUImainmenu {
 		welcome.setFont(new Font("Serif", Font.BOLD, 15));
 		welcome.setBounds(370, 20, 700, 100);
 		
+		/*JOptionPane exit = new JOptionPane();
+		JOptionPane.showConfirmDialog(frame, "Moechtest du das Programm wirklich schliessen?", "Programm beenden", JOptionPane.YES_NO_CANCEL_OPTION);*/ //Trigger beim Schließen des Programms
+		
 		panel.add(welcome);
 		frame.add(panel);
 		
@@ -45,7 +48,7 @@ public class GUImainmenu {
 	
 	public static void menucreation() {
 		menubar = new JMenuBar();  //JFrame Menü oben am Fenster
-		JMenu menucon = new JMenu("Verbinden");
+		JMenu menucon = new JMenu("Verbindung");
 		menucon.setMnemonic(KeyEvent.VK_A);
 		menubar.add(menucon);
 		
@@ -55,6 +58,15 @@ public class GUImainmenu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ConnectionWindow.framecreation();
+			}
+		});
+		JMenuItem disconnect = new JMenuItem("Verbindung trennen");
+		disconnect.setToolTipText("Disconnect your Bot from Channel");
+		menucon.add(disconnect);
+		disconnect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				main.bot.disconnect();
 			}
 		});
 		
