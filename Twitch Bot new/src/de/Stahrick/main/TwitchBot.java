@@ -81,6 +81,7 @@ HashMap<String, Long> Viewertimecheck;
 			this.changeNick(main.Botname + "*");
 			this.kick(main.channel, main.Botname);
 			this.changeNick(main.Botname);
+			ConnectionWindow.status.setText("Botname bereits vergeben!");
 			try {
 				this.reconnect();
 			} catch (IOException | IrcException e1) {

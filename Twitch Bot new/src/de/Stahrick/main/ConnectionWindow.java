@@ -2,6 +2,8 @@ package de.Stahrick.main;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -40,6 +42,12 @@ public class ConnectionWindow {
 		connect.setBounds(270, 520, 100, 25);
 		connect.setText("Verbinden");
 		connect.setToolTipText("Connect");
+		connect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				main.botconnection();
+			}
+		});
 		JButton cancel = new JButton();
 		cancel.setBounds(30, 520, 100, 25);
 		cancel.setText("Abbrechen");

@@ -33,8 +33,7 @@ public class GUImainmenu {
 		welcome.setFont(new Font("Serif", Font.BOLD, 15));
 		welcome.setBounds(370, 20, 700, 100);
 		
-		/*JOptionPane exit = new JOptionPane();
-		JOptionPane.showConfirmDialog(frame, "Moechtest du das Programm wirklich schliessen?", "Programm beenden", JOptionPane.YES_NO_CANCEL_OPTION);*/ //Trigger beim Schlieﬂen des Programms
+		//JOptionPane.showConfirmDialog(frame, "Moechtest du das Programm wirklich schliessen?", "Programm beenden", JOptionPane.YES_NO_CANCEL_OPTION); //Trigger beim Schlieﬂen des Programms
 		
 		panel.add(welcome);
 		frame.add(panel);

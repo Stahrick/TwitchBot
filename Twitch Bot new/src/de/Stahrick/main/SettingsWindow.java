@@ -108,6 +108,7 @@ public class SettingsWindow {
 				if(output != null) {
 					try{
 						output.close();
+						main.Configreading();
 					} catch(IOException g) {
 						g.printStackTrace();
 					}

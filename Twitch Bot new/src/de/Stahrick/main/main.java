@@ -15,6 +15,9 @@ import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 import org.jibble.pircbot.IrcException;
 import org.jibble.pircbot.NickAlreadyInUseException;
 
@@ -44,22 +47,10 @@ public void onDisable() {
 	ViewerListms.clear();
 }
 	
-	public static void mainmethode(String[] args) {
+	public static void botconfiguration() {
 		
 		bot = new TwitchBot();
-		
 		bot.setVerbose(true);
-		try {
-			bot.connect("irc.twitch.tv", 6667, oauthtoken);
-		} catch (NickAlreadyInUseException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (IrcException e) {
-			e.printStackTrace();
-		}
-		bot.joinChannel(channel);
-		bot.sendMessage(channel, "Piep Piep Assistant droped Piep Piep");
 	
 	Timer timer = new Timer();
 	timer.schedule(new TimerTask() {
@@ -70,33 +61,34 @@ public void onDisable() {
 		
 	}, 0, 1800000);  //1800000 ms for 30 Minutes
 }
+	
+	public static void botconnection() {
+		if(Streamername != null) {
+		if(oauthtoken != null) {
+		if(Botname != null) {
+			try {
+				ConnectionWindow.status.setText("Connecting...");
+				bot.connect("irc.twitch.tv", 6667, oauthtoken);
+				bot.joinChannel(channel);
+				bot.sendMessage(channel, "Piep Piep Assistant droped Piep Piep");
+				ConnectionWindow.status.setText("Bot connected!");
+			} catch (NickAlreadyInUseException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (IrcException e) {
+				e.printStackTrace();
+			}
+		}else{JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); JOptionPane.showMessageDialog(dialog, "Connection fehlgeschlagen, da der Botname nicht gesetzt wurde!", "Botname not set", JOptionPane.ERROR_MESSAGE);}
+		}else{JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); JOptionPane.showMessageDialog(dialog, "Connection fehlgeschlagen, da der oAuthToken nicht gesetzt wurde!", "oAuthToken not set", JOptionPane.ERROR_MESSAGE);}
+		}else{JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); JOptionPane.showMessageDialog(dialog, "Connection fehlgeschlagen, da dein Streamname nicht gesetzt wurde!", "Streamname not set", JOptionPane.ERROR_MESSAGE);}
+	}
 
 
 @SuppressWarnings( "unchecked" )
  public void Filereading() {
 	File ViewerListfile = new File(directory + "ViewerList.txt");
-	File ViewerListfilems = new File(directory + "ViewerListms.txt");
-	Properties prop = new Properties();
-	InputStream input = null;
-
-	try {
-		input = new FileInputStream(directory + "config.properties");
-		prop.load(input);
-		Botname = prop.getProperty("Botname");
-		Streamername = prop.getProperty("Streamername");
-		oauthtoken = prop.getProperty("oAuthToken");
-		Activitycheck = prop.getProperty("Activitycheck");
-	} catch(IOException e) {
-		e.printStackTrace();
-	} finally {
-		if(input != null) {
-			try{
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	File ViewerListfilems = new File(directory + "ViewerListms.txt");   //Giveaway Gewinnchance File erstellen usw.
 	
 	try {																	//ViewerList
 		FileInputStream f = new FileInputStream(ViewerListfile);
@@ -127,7 +119,6 @@ public void onDisable() {
  public void Filesaving() {
 	 File ViewerListfile = new File(directory + "ViewerList.txt");
 	 File ViewerListfilems = new File(directory + "ViewerListms.txt");
-	 
 	 try {
 		FileOutputStream f = new FileOutputStream(ViewerListfile);
 		ObjectOutputStream s = new ObjectOutputStream(f);
@@ -160,31 +151,57 @@ public void onDisable() {
 		try {
 			Config.mkdirs();
 			Config.createNewFile();
+			
+			Properties prop = new Properties();
+			OutputStream output = null;
+			
+			try{
+				output = new FileOutputStream(Config);
+				prop.setProperty("Streamername", null);
+				prop.setProperty("Botname", null);
+				prop.setProperty("oAuthToken", null);
+				prop.setProperty("Activitycheck", null);
+				prop.store(output, null);
+			} catch(IOException e) {
+				e.printStackTrace();
+			} finally {
+				if(output != null) {
+					try{
+						output.close();
+					} catch(IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	Properties prop = new Properties();
-	OutputStream output = null;
-	
-	try{
-		output = new FileOutputStream(Config);
-		prop.setProperty("Streamername", "Twitchname");
-		prop.setProperty("Botname", "Name");
-		prop.setProperty("oAuthToken", "Token");
-		prop.setProperty("Activitycheck", "false");
-		prop.store(output, null);
-	} catch(IOException e) {
-		e.printStackTrace();
-	} finally {
-		if(output != null) {
-			try{
-				output.close();
-			} catch(IOException e) {
-				e.printStackTrace();
+ }
+ 
+ public static void Configreading() {
+	 Properties prop = new Properties();
+	 InputStream input = null;
+
+		try {
+			input = new FileInputStream(directory + "config.properties");
+			prop.load(input);
+			Botname = prop.getProperty("Botname");
+			Streamername = prop.getProperty("Streamername");
+			oauthtoken = prop.getProperty("oAuthToken");
+			Activitycheck = prop.getProperty("Activitycheck");
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(input != null) {
+				try{
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-	}
+	 
  }
  
  public void Filecheck() {
