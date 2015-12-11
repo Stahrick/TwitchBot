@@ -22,6 +22,7 @@ public class SettingsWindow {
 	final JTextField botnametext;	
 	final JTextField twitchnametext;
 	final JTextField oAuthtext;
+	final JTextField aktivtime;
 	final JCheckBox aktivitaet;
 	Saving sav = new Saving();
 	final Thread t = new Thread(sav);
@@ -39,6 +40,8 @@ public class SettingsWindow {
 	twitchname.setBounds(10, 30, 132, 15);
 	JLabel oAuth = new JLabel("oAuthPassword");
 	oAuth.setBounds(10, 90, 282, 15);
+	JLabel aktivtimebesch = new JLabel("Aktiver Zuschauer Zeit");
+	aktivtimebesch.setBounds(10, 145, 300, 15);
 	status = new JLabel("Bereit");
 	status.setBounds(50, 530, 300, 15);
 	JLabel statusbeschr = new JLabel("Status:");
@@ -55,11 +58,14 @@ public class SettingsWindow {
 	oAuthtext = new JTextField("");
 	oAuthtext.setToolTipText("oAuth Token des Accounts deines Bots eingeben");
 	oAuthtext.setBounds(10, 111, 282, 21);
+	aktivtime = new JTextField("");
+	aktivtime.setBounds(10, 169, 200, 21);
+	aktivtime.setToolTipText("Wie viel Zeit muss der Zuschauer zugucken, um ihn in die Giveaway Datei aufzunehmen");
 	
 	aktivitaet = new JCheckBox();									//JCheckbox
 	aktivitaet.setText("Aktivit\u00E4tspr\u00FCfung aller Nutzer");
 	aktivitaet.setToolTipText("Activity control of all users.");
-	aktivitaet.setBounds(10, 151, 190, 26);
+	aktivitaet.setBounds(10, 251, 190, 26);
 	
 	
 	JButton speichern = new JButton();
@@ -77,7 +83,10 @@ public class SettingsWindow {
 	panel.add(oAuth);
 	panel.add(oAuthtext);
 	panel.add(aktivitaet);
+	panel.add(aktivtime);
+	panel.add(aktivtimebesch);
 	panel.add(speichern);
+	
 	
 	frame.add(panel);
 	
@@ -101,6 +110,7 @@ public class SettingsWindow {
 				}else{
 					prop.setProperty("Activitycheck", "false");
 				}
+				prop.setProperty("Aktivitaetszeit", aktivtime.getText());
 				prop.store(output, null);
 			} catch(IOException f) {
 				f.printStackTrace();

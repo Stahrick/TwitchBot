@@ -32,6 +32,8 @@ public static String oauthtoken = null;
 public static String userName = System.getProperty("user.name");
 public static String directory = userName + File.separator + "Documents/TwitchBot/";
 public static String Activitycheck;
+public static String Aktivaetszeit;
+public static int Aktivaetszeitint = Integer.parseInt(Aktivaetszeit);
 public static TwitchBot bot;
 
 public void onEnable() {
@@ -161,6 +163,7 @@ public void onDisable() {
 				prop.setProperty("Botname", null);
 				prop.setProperty("oAuthToken", null);
 				prop.setProperty("Activitycheck", null);
+				prop.setProperty("Aktivitaetszeit", "30");
 				prop.store(output, null);
 			} catch(IOException e) {
 				e.printStackTrace();
@@ -190,6 +193,7 @@ public void onDisable() {
 			Streamername = prop.getProperty("Streamername");
 			oauthtoken = prop.getProperty("oAuthToken");
 			Activitycheck = prop.getProperty("Activitycheck");
+			Aktivaetszeit = prop.getProperty("Aktivitaetszeit");
 		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {

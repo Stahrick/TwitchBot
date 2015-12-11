@@ -51,7 +51,7 @@ HashMap<String, Long> Viewertimecheck;
 				long Date = System.currentTimeMillis();
 				long oldtime = Viewertimecheck.get(sourceNick);
 				long difference = Date - oldtime;
-				if(difference >= 1800000) {
+				if(difference >= Integer.parseInt(main.Aktivaetszeit)) {
 					Viewertimecheck.remove(sourceNick);
 					main.ViewerListms.put(sourceNick, oldtime);
 					return;
