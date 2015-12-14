@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.osgi_3.10.2.v20150203-1939.jar" sourcepath="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.osgi.source_3.10.2.v20150203-1939.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.core.commands_3.6.100.v20140528-1422.jar" sourcepath="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.core.commands.source_3.6.100.v20140528-1422.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar" sourcepath="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.equinox.common.source_3.6.200.v20130402-1505.jar"/>
@@ -15,5 +14,6 @@
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/com.ibm.icu_52.1.1.v201501240615.jar" sourcepath="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/com.ibm.icu.source_52.1.1.v201501240615.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.ui.forms_3.6.100.v20140422-1825.jar" sourcepath="C:/Users/Peddy/Desktop/Bukkit Plugin Entwicklung/eclipse/plugins/org.eclipse.ui.forms.source_3.6.100.v20140422-1825.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Peddy/Desktop/pircbot.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_66"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
